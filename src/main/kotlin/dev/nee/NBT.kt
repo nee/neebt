@@ -20,30 +20,38 @@ object NBT {
 			is List<*>   -> {
 				val type = Type.idForValue(first())
 				forEach {
-					require(Type.idForValue(it) == type) { "$it is not of the same type as ${first()} in dev.nee.NBT list" }
+					require(Type.idForValue(it) == type) { "$it is not of the same type as ${first()} in NBT list" }
 				}
 				NBTList(type, map { it.toNBT() })
 			}
 			is Map<*, *> -> {
 				keys.forEach {
-					require(it is String) { "$it is not a string and therefore can't be used as a key in a dev.nee.NBT compound" }
+					require(it is String) { "$it is not a string and therefore can't be used as a key in a NBT compound" }
 				}
 				NBTCompound(mapKeys { (it.key as String) to Type.idForValue(it.value) }.mapValues { it.value.toNBT() })
 			}
 			else         -> throw IllegalArgumentException(
-				"Can't use $this in dev.nee.NBT"
+				"Can't use $this in NBT"
 			)
 		}
 	}
 
 	private fun Any.toNonNBT(): Any {
 		return when (this) {
-			is Byte, is Short, is Int, is Long, is Float, is Double, is ByteArray, is String, is IntArray, is LongArray -> this
-			is NBTList<*>                                                                                               -> this.map { it.toNonNBT() }
-			is NBTCompound<*>                                                                                           -> this
-				.mapKeys { it.key.first }.mapValues { it.value.toNonNBT() }
-			else                                                                                                        -> throw IllegalArgumentException(
-				"Can't convert $this to non-dev.nee.NBT (should never happen)"
+			is Byte,
+			is Short,
+			is Int,
+			is Long,
+			is Float,
+			is Double,
+			is ByteArray,
+			is String,
+			is IntArray,
+			is LongArray      -> this
+			is NBTList<*>     -> this.map { it.toNonNBT() }
+			is NBTCompound<*> -> this.mapKeys { it.key.first }.mapValues { it.value.toNonNBT() }
+			else              -> throw IllegalArgumentException(
+				"Can't convert $this to non-NBT (should never happen)"
 			)
 		}
 	}
@@ -79,6 +87,7 @@ object NBT {
 	fun DataInputStream.readNBTList(): List<Any> = (Type forId Type.LIST).read(this).toNonNBT() as List<Any>
 	fun DataInputStream.readNBTCompound(): Map<String, Any> =
 		(Type forId Type.COMPOUND).read(this).toNonNBT() as Map<String, Any>
+
 	fun DataInputStream.readNamedNBTCompound(): Pair<String, Map<String, Any>> {
 		check(readByte() == Type.COMPOUND)
 		val name = readUTF()

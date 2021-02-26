@@ -39,7 +39,7 @@ internal class Type<T : Any>(
 				is Map<*, *> -> COMPOUND
 				is IntArray  -> INT_ARRAY
 				is LongArray -> LONG_ARRAY
-				else         -> throw IllegalArgumentException("Can't use $value in dev.nee.NBT")
+				else         -> throw IllegalArgumentException("Can't use $value in NBT")
 			}
 
 		@OptIn(ExperimentalStdlibApi::class)
