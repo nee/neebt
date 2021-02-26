@@ -3,8 +3,17 @@ package dev.nee
 import java.io.DataInputStream
 import java.io.DataOutputStream
 
+/**
+ * A wrapper for public NBT functions.
+ */
 @Suppress("UNCHECKED_CAST", "unused")
 object NBT {
+	/**
+	 * Converts any value to its NBT counterpart:
+	 * Primitives and Arrays stay unchanged,
+	 * lists and maps are converted to NBTLists and NBTCompounds, respectively.
+	 * This function assumes that the receiver is valid (map keys are strings, the type exists in NBT).
+	 */
 	private fun Any?.toNBT(): Any {
 		return when (this) {
 			is Byte,
@@ -36,6 +45,12 @@ object NBT {
 		}
 	}
 
+	/**
+	 * Converts any NBT value to its non-NBT counterpart:
+	 * Primitives and Arrays stay unchanged,
+	 * NBTLists and NBTCompounds are converted to lists and maps, respectively.
+	 * This function assumes that the receiver is valid (the type exists in NBT).
+	 */
 	private fun Any.toNonNBT(): Any {
 		return when (this) {
 			is Byte,
@@ -108,6 +123,21 @@ object NBT {
 	fun <E> List<E>.toSNBT() = (Type forId Type.LIST).toSNBT(this.toNBT())
 	fun <V> Map<String, V>.toSNBT() = (Type forId Type.COMPOUND).toSNBT(this.toNBT())
 
+	/**
+	 * Merges [a] and [b] deeply with the following algorithm:
+	 * ```
+	 * c = a
+	 * for (key in b) {
+	 *     if (key in a && a[key] is Map && b[key] is Map) {
+	 *         c[key] = mergeMaps(a[key], b[key])
+	 *     } else {
+	 *         c[key] = b[key]
+	 *     }
+	 * }
+	 * ```
+	 *
+	 * @return `c`, the merged map
+	 */
 	fun mergeMaps(a: Map<String, Any>, b: Map<String, Any>): Map<String, Any> {
 		val c = a.toMutableMap()
 		b.forEach { (key, value) ->
@@ -118,6 +148,21 @@ object NBT {
 		return c
 	}
 
+	/**
+	 * Merges [a] and [b] deeply with the following algorithm:
+	 * ```
+	 * c = a
+	 * for (index in b) {
+	 *     if (index in a && a[index] is List && b[index] is List) {
+	 *         c[index] = mergeLists(a[index], b[index])
+	 *     } else {
+	 *         c[index] = b[index]
+	 *     }
+	 * }
+	 * ```
+	 *
+	 * @return `c`, the merged list
+	 */
 	fun mergeLists(a: List<Any>, b: List<Any>): List<Any> {
 		val c = a.toMutableList()
 		b.forEachIndexed { index, value ->
@@ -130,6 +175,29 @@ object NBT {
 		return c
 	}
 
+	/**
+	 * Merges [a] and [b] deeply with the following algorithm:
+	 * ```
+	 * c = a
+	 * for (key in b) {
+	 *     if (key in a) {
+	 *         if (a[key] is Map && b[key] is Map) {
+	 *             c[key] = merge(a[key], b[key])
+	 *         }
+	 *         else if (a[key] is List && b[key] is List) {
+	 *             c[key] = merge(a[key], b[key])
+	 *         }
+	 *         else {
+	 *             c[key] = b[key]
+	 *         }
+	 *     } else {
+	 *         c[key] = b[key]
+	 *     }
+	 * }
+	 * ```
+	 *
+	 * @return `c`, the merged map
+	 */
 	fun merge(a: Map<String, Any>, b: Map<String, Any>): Map<String, Any> {
 		val c = a.toMutableMap()
 		b.forEach { (key, value) ->
@@ -145,6 +213,29 @@ object NBT {
 		return c
 	}
 
+	/**
+	 * Merges [a] and [b] deeply with the following algorithm:
+	 * ```
+	 * c = a
+	 * for (key in b) {
+	 *     if (key in a) {
+	 *         if (a[key] is Map && b[key] is Map) {
+	 *             c[key] = merge(a[key], b[key])
+	 *         }
+	 *         else if (a[key] is List && b[key] is List) {
+	 *             c[key] = a[key] + b[key]
+	 *         }
+	 *         else {
+	 *             c[key] = b[key]
+	 *         }
+	 *     } else {
+	 *         c[key] = b[key]
+	 *     }
+	 * }
+	 * ```
+	 *
+	 * @return `c`, the merged map
+	 */
 	fun mergeAdding(a: Map<String, Any>, b: Map<String, Any>): Map<String, Any> {
 		val c = a.toMutableMap()
 		b.forEach { (key, value) ->
@@ -160,6 +251,29 @@ object NBT {
 		return c
 	}
 
+	/**
+	 * Merges [a] and [b] deeply with the following algorithm:
+	 * ```
+	 * c = a
+	 * for (index in b) {
+	 *     if (index in a) {
+	 *         if (a[index] is Map && b[index] is Map) {
+	 *             c[index] = merge(a[index], b[index])
+	 *         }
+	 *         else if (a[index] is List && b[index] is List) {
+	 *             c[index] = merge(a[index], b[index])
+	 *         }
+	 *         else {
+	 *             c[index] = b[index]
+	 *         }
+	 *     } else {
+	 *         c[index] = b[index]
+	 *     }
+	 * }
+	 * ```
+	 *
+	 * @return `c`, the merged list
+	 */
 	fun merge(a: List<Any>, b: List<Any>): List<Any> {
 		val c = a.toMutableList()
 		b.forEachIndexed { index, value ->
