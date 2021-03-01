@@ -13,7 +13,8 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 15
-      - uses: eskatos/gradle-command-action@v1
+      - name: :docs:orchidDeploy
+        uses: eskatos/gradle-command-action@v1
         env:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
         with:
