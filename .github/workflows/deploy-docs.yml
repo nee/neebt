@@ -15,6 +15,6 @@ jobs:
           java-version: 15
       - uses: eskatos/gradle-command-action@v1
         env:
-          githubToken: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
         with:
           arguments: ':docs:orchidDeploy -PorchidEnvironment=prod'
