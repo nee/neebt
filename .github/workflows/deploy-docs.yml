@@ -11,7 +11,7 @@ jobs:
 
       - name: Create changelog entry
         shell: cmd
-        run: "echo $FILE_DATA > $FILE_NAME; git add $FILE_NAME"
+        run: "echo %FILE_DATA% > %FILE_NAME%; git add %FILE_NAME%"
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
           FILE_NAME: "docs/src/orchid/resources/changelog/$TAG_NAME.txt"
