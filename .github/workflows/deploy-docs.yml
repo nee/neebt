@@ -10,10 +10,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create changelog entry
-        shell: cmd
-        run: |
-          echo %FILE_PATH%
-          echo %FILE_DATA% > %FILE_PATH%
+        run: $env:FILE_DATA | Set-Content $env:FILE_PATH
         env:
           FILE_PATH: "docs/src/orchid/resources/changelog/${{ github.event.release.tag_name }}.md"
           FILE_DATA: ${{ github.event.release.body }}
