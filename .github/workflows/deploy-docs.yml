@@ -12,12 +12,13 @@ jobs:
       - name: Create changelog entry
         shell: cmd
         run: |
-          echo %FILE_DATA%
-          echo %FILE_DATA% > hello.txt; git add hello.txt
+          echo %FILE_DATA% > %FILE_PATH%
+          git add %FILE_PATH%
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
-          FILE_NAME: "docs/src/orchid/resources/changelog/$TAG_NAME.txt"
-          FILE_DATA: "#${{ github.event.release.name }}\n${{ github.event.release.body }}"
+          BODY: ${{ github.event.release.body }}
+          FILE_PATH: "docs/src/orchid/resources/changelog/$TAG_NAME.txt"
+          FILE_DATA: "#$TAG_NAME\n$BODY"
 
       - name: Commit changelog entry and push
         uses: actions-js/push@master
