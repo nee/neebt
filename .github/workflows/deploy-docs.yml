@@ -15,10 +15,8 @@ jobs:
           echo %FILE_DATA% > %FILE_PATH%
           git add %FILE_PATH%
         env:
-          TAG_NAME: ${{ github.event.release.tag_name }}
-          BODY: ${{ github.event.release.body }}
-          FILE_PATH: "docs/src/orchid/resources/changelog/$TAG_NAME.txt"
-          FILE_DATA: "#$TAG_NAME\n$BODY"
+          FILE_PATH: "docs/src/orchid/resources/changelog/${{ github.event.release.tag_name }}.txt"
+          FILE_DATA: ${{ github.event.release.body }}
 
       - name: Commit changelog entry and push
         uses: actions-js/push@master
