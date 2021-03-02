@@ -1,15 +1,34 @@
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   gradle:
     runs-on: windows-latest
+    env:
+      TAG_NAME: ${{ github.event.release.tag_name }}
+      FILE_NAME: "docs/src/orchid/resources/changelog/$TAG_NAME.txt"
+      FILE_DATA: "#${{ github.event.release.name }}\n${{ github.event.release.body }}"
     steps:
       - uses: actions/checkout@v2
+
+      - name: Create changelog entry
+        uses: "finnp/create-file-action@master"
+
+      - name: Add changelog entry to git
+        run: git add $FILE_NAME
+
+      - name: Commit changelog entry and push
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          author_name: "Version manager"
+          message: "Publish version $TAG_NAME"
+
       - uses: actions/setup-java@v1
         with:
           java-version: 15
+
       - name: :docs:orchidDeploy
         uses: eskatos/gradle-command-action@v1
         env:
