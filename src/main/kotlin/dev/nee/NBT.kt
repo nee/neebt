@@ -110,6 +110,8 @@ object NBT {
 		return name to compound
 	}
 
+//	fun <T> DataInputStream.readNBT() =
+
 	fun Byte.toSNBT() = (Type forId Type.BYTE).toSNBT(this)
 	fun Short.toSNBT() = (Type forId Type.SHORT).toSNBT(this)
 	fun Int.toSNBT() = (Type forId Type.INT).toSNBT(this)
@@ -126,7 +128,7 @@ object NBT {
 	/**
 	 * Merges [a] and [b] deeply with the following algorithm:
 	 * ```
-	 * c = a
+	 * val c = a
 	 * for (key in b) {
 	 *     if (key in a && a[key] is Map && b[key] is Map) {
 	 *         c[key] = mergeMaps(a[key], b[key])
@@ -151,7 +153,7 @@ object NBT {
 	/**
 	 * Merges [a] and [b] deeply with the following algorithm:
 	 * ```
-	 * c = a
+	 * val c = a
 	 * for (index in b) {
 	 *     if (index in a && a[index] is List && b[index] is List) {
 	 *         c[index] = mergeLists(a[index], b[index])
@@ -178,7 +180,7 @@ object NBT {
 	/**
 	 * Merges [a] and [b] deeply with the following algorithm:
 	 * ```
-	 * c = a
+	 * val c = a
 	 * for (key in b) {
 	 *     if (key in a) {
 	 *         if (a[key] is Map && b[key] is Map) {
@@ -216,11 +218,11 @@ object NBT {
 	/**
 	 * Merges [a] and [b] deeply with the following algorithm:
 	 * ```
-	 * c = a
+	 * val c = a
 	 * for (key in b) {
 	 *     if (key in a) {
 	 *         if (a[key] is Map && b[key] is Map) {
-	 *             c[key] = merge(a[key], b[key])
+	 *             c[key] = mergeAdding(a[key], b[key])
 	 *         }
 	 *         else if (a[key] is List && b[key] is List) {
 	 *             c[key] = a[key] + b[key]
@@ -242,7 +244,7 @@ object NBT {
 			if (key in c) {
 				val valueBefore = c[key]
 				if (value is Map<*, *> && valueBefore is Map<*, *>) {
-					c[key] = merge(valueBefore as Map<String, Any>, value as Map<String, Any>)
+					c[key] = mergeAdding(valueBefore as Map<String, Any>, value as Map<String, Any>)
 				} else if (value is List<*> && valueBefore is List<*>) {
 					c[key] = valueBefore + value
 				} else c[key] = value
@@ -254,7 +256,7 @@ object NBT {
 	/**
 	 * Merges [a] and [b] deeply with the following algorithm:
 	 * ```
-	 * c = a
+	 * val c = a
 	 * for (index in b) {
 	 *     if (index in a) {
 	 *         if (a[index] is Map && b[index] is Map) {
