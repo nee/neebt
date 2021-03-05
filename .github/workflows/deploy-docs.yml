@@ -1,20 +1,34 @@
 on:
-  push:
-    paths:
-      - 'docs/**'
-    branches:
-      - master
+  release:
+    types: [published]
 
 jobs:
-  gradle:
+  deploy-docs:
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v2
+
+      - name: Create changelog entry
+        run: $env:FILE_DATA | Set-Content $env:FILE_PATH
+        env:
+          FILE_PATH: "docs/src/orchid/resources/changelog/${{ github.event.release.tag_name }}.md"
+          FILE_DATA: ${{ github.event.release.body }}
+
+      - name: Commit changelog entry and push
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          author_name: "Version manager"
+          message: "Publish version $TAG_NAME"
+
       - uses: actions/setup-java@v1
         with:
           java-version: 15
-      - uses: eskatos/gradle-command-action@v1
+
+      - name: :docs:orchidDeploy
+        uses: eskatos/gradle-command-action@v1
         env:
-          githubToken: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
         with:
           arguments: ':docs:orchidDeploy -PorchidEnvironment=prod'

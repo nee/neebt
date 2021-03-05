@@ -44,5 +44,5 @@ services:
       - type: 'githubPages'
         username: 'LeonardNolting'
         repo: 'nee/neebt'
-      - type: 'githubReleases'
-        repo: 'nee/neebt'
+#      - type: 'githubReleases'
+#        repo: 'nee/neebt'
