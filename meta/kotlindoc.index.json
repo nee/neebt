@@ -1,0 +1,54 @@
+{
+  "ownKey": "kotlindoc",
+  "childrenPages": {"kotlindoc": {
+    "ownKey": "kotlindoc",
+    "childrenPages": {"dev": {
+      "ownKey": "dev",
+      "childrenPages": {"nee": {
+        "ownKey": "nee",
+        "childrenPages": {"nbt": {
+          "ownKey": "nbt",
+          "ownPages": [{
+            "reference": {
+              "path": "kotlindoc",
+              "baseUrl": "https://nee.github.io/neebt",
+              "fileName": "dev/nee/nbt",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://nee.github.io/neebt/kotlindoc/dev/nee/nbt"
+            },
+            "description": "",
+            "title": "NBT",
+            "content": "<p>A wrapper for public NBT functions.<\/p>writeNBT\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNamedNBTCompound<\/p>\n<p>readNBTByte<\/p>\n<p>readNBTShort<\/p>\n<p>readNBTInt<\/p>\n<p>readNBTLong<\/p>\n<p>readNBTFloat<\/p>\n<p>readNBTDouble<\/p>\n<p>readNBTByteArray<\/p>\n<p>readNBTString<\/p>\n<p>readNBTIntArray<\/p>\n<p>readNBTLongArray<\/p>\n<p>readNBTList<\/p>\n<p>readNBTCompound<\/p>\n<p>readNamedNBTCompound<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>mergeMaps\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (key in b) {\nif (key in a &amp;&amp; a[key] is Map &amp;&amp; b[key] is Map) {\nc[key] = mergeMaps(a[key], b[key])\n} else {\nc[key] = b[key]\n}\n}<\/p>\n<\/code><\/pre>\nmergeLists\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (index in b) {\n    if (index in a && a[index] is List && b[index] is List) {\n        c[index] = mergeLists(a[index], b[index])\n    } else {\n        c[index] = b[index]\n    }\n}\n<\/code><\/pre>\nmerge\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (key in b) {\n    if (key in a) {\n        if (a[key] is Map && b[key] is Map) {\n            c[key] = merge(a[key], b[key])\n        }\n        else if (a[key] is List && b[key] is List) {\n            c[key] = merge(a[key], b[key])\n        }\n        else {\n            c[key] = b[key]\n        }\n    } else {\n        c[key] = b[key]\n    }\n}\n<\/code><\/pre>\nmerge\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (index in b) {\n    if (index in a) {\n        if (a[index] is Map && b[index] is Map) {\n            c[index] = merge(a[index], b[index])\n        }\n        else if (a[index] is List && b[index] is List) {\n            c[index] = merge(a[index], b[index])\n        }\n        else {\n            c[index] = b[index]\n        }\n    } else {\n        c[index] = b[index]\n    }\n}\n<\/code><\/pre>\nmergeAdding\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (key in b) {\n    if (key in a) {\n        if (a[key] is Map && b[key] is Map) {\n            c[key] = mergeAdding(a[key], b[key])\n        }\n        else if (a[key] is List && b[key] is List) {\n            c[key] = a[key] + b[key]\n        }\n        else {\n            c[key] = b[key]\n        }\n    } else {\n        c[key] = b[key]\n    }\n}\n<\/code><\/pre>\n"
+          }]
+        }},
+        "ownPages": [{
+          "reference": {
+            "path": "kotlindoc",
+            "baseUrl": "https://nee.github.io/neebt",
+            "fileName": "dev/nee",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://nee.github.io/neebt/kotlindoc/dev/nee"
+          },
+          "description": "",
+          "title": "dev.nee",
+          "content": "<p>NBT<\/p>\n<p>A wrapper for public NBT functions.<\/p>\n"
+        }]
+      }}
+    }},
+    "ownPages": [{
+      "reference": {
+        "path": "kotlindoc",
+        "baseUrl": "https://nee.github.io/neebt",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://nee.github.io/neebt/kotlindoc"
+      },
+      "description": "",
+      "title": "README",
+      "content": "<h1 id=\"neebt\"><a href=\"#neebt\" id=\"neebt\" class=\"anchor\"><\/a>neebt<\/h1>\n<p>Kotlin library to work with the NBT file format.\nHello fork.<\/p>\n"
+    }]
+  }}
+}

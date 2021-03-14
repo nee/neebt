@@ -1,0 +1,166 @@
+{
+  "ownKey": "index",
+  "childrenPages": {
+    "kotlindoc": {
+      "ownKey": "kotlindoc",
+      "childrenPages": {"dev": {
+        "ownKey": "dev",
+        "childrenPages": {"nee": {
+          "ownKey": "nee",
+          "childrenPages": {"nbt": {
+            "ownKey": "nbt",
+            "ownPages": [{
+              "reference": {
+                "path": "kotlindoc",
+                "baseUrl": "https://nee.github.io/neebt",
+                "fileName": "dev/nee/nbt",
+                "extension": "html",
+                "usePrettyUrl": true,
+                "link": "https://nee.github.io/neebt/kotlindoc/dev/nee/nbt"
+              },
+              "description": "",
+              "title": "NBT",
+              "content": "<p>A wrapper for public NBT functions.<\/p>writeNBT\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNBT<\/p>\n<p>writeNamedNBTCompound<\/p>\n<p>readNBTByte<\/p>\n<p>readNBTShort<\/p>\n<p>readNBTInt<\/p>\n<p>readNBTLong<\/p>\n<p>readNBTFloat<\/p>\n<p>readNBTDouble<\/p>\n<p>readNBTByteArray<\/p>\n<p>readNBTString<\/p>\n<p>readNBTIntArray<\/p>\n<p>readNBTLongArray<\/p>\n<p>readNBTList<\/p>\n<p>readNBTCompound<\/p>\n<p>readNamedNBTCompound<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>toSNBT<\/p>\n<p>mergeMaps\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (key in b) {\nif (key in a &amp;&amp; a[key] is Map &amp;&amp; b[key] is Map) {\nc[key] = mergeMaps(a[key], b[key])\n} else {\nc[key] = b[key]\n}\n}<\/p>\n<\/code><\/pre>\nmergeLists\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (index in b) {\n    if (index in a && a[index] is List && b[index] is List) {\n        c[index] = mergeLists(a[index], b[index])\n    } else {\n        c[index] = b[index]\n    }\n}\n<\/code><\/pre>\nmerge\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (key in b) {\n    if (key in a) {\n        if (a[key] is Map && b[key] is Map) {\n            c[key] = merge(a[key], b[key])\n        }\n        else if (a[key] is List && b[key] is List) {\n            c[key] = merge(a[key], b[key])\n        }\n        else {\n            c[key] = b[key]\n        }\n    } else {\n        c[key] = b[key]\n    }\n}\n<\/code><\/pre>\nmerge\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (index in b) {\n    if (index in a) {\n        if (a[index] is Map && b[index] is Map) {\n            c[index] = merge(a[index], b[index])\n        }\n        else if (a[index] is List && b[index] is List) {\n            c[index] = merge(a[index], b[index])\n        }\n        else {\n            c[index] = b[index]\n        }\n    } else {\n        c[index] = b[index]\n    }\n}\n<\/code><\/pre>\nmergeAdding\n<p>Merges  a  and  b  deeply with the following algorithm:<\/p><pre><code>\nval c = a\nfor (key in b) {\n    if (key in a) {\n        if (a[key] is Map && b[key] is Map) {\n            c[key] = mergeAdding(a[key], b[key])\n        }\n        else if (a[key] is List && b[key] is List) {\n            c[key] = a[key] + b[key]\n        }\n        else {\n            c[key] = b[key]\n        }\n    } else {\n        c[key] = b[key]\n    }\n}\n<\/code><\/pre>\n"
+            }]
+          }},
+          "ownPages": [{
+            "reference": {
+              "path": "kotlindoc",
+              "baseUrl": "https://nee.github.io/neebt",
+              "fileName": "dev/nee",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://nee.github.io/neebt/kotlindoc/dev/nee"
+            },
+            "description": "",
+            "title": "dev.nee",
+            "content": "<p>NBT<\/p>\n<p>A wrapper for public NBT functions.<\/p>\n"
+          }]
+        }}
+      }},
+      "ownPages": [{
+        "reference": {
+          "path": "kotlindoc",
+          "baseUrl": "https://nee.github.io/neebt",
+          "fileName": "",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://nee.github.io/neebt/kotlindoc"
+        },
+        "description": "",
+        "title": "README",
+        "content": "<h1 id=\"neebt\"><a href=\"#neebt\" id=\"neebt\" class=\"anchor\"><\/a>neebt<\/h1>\n<p>Kotlin library to work with the NBT file format.\nHello fork.<\/p>\n"
+      }]
+    },
+    "wiki": {
+      "ownKey": "wiki",
+      "childrenPages": {
+        "installation": {
+          "ownKey": "installation",
+          "ownPages": [{
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://nee.github.io/neebt",
+              "fileName": "installation",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://nee.github.io/neebt/wiki/installation"
+            },
+            "next": {
+              "path": "wiki",
+              "baseUrl": "https://nee.github.io/neebt",
+              "fileName": "usage",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://nee.github.io/neebt/wiki/usage"
+            },
+            "description": "",
+            "title": "Installation",
+            "content": "<h1 id=\"gradle\"><a href=\"#gradle\" id=\"gradle\" class=\"anchor\"><\/a>Gradle<\/h1>\n<p>Repositories:<\/p>\n<pre><code class=\"language-kotlin\">maven(url = &quot;https://jitpack.io&quot;)\n<\/code><\/pre>\n<p>Dependencies:<\/p>\n<pre><code class=\"language-kotlin\">implementation(group = &quot;com.github.nee&quot;, name = &quot;neebt&quot;, version = &quot;v1.0.0&quot;)\n<\/code><\/pre>\n"
+          }]
+        },
+        "usage": {
+          "ownKey": "usage",
+          "ownPages": [{
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://nee.github.io/neebt",
+              "fileName": "usage",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://nee.github.io/neebt/wiki/usage"
+            },
+            "previous": {
+              "path": "wiki",
+              "baseUrl": "https://nee.github.io/neebt",
+              "fileName": "installation",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://nee.github.io/neebt/wiki/installation"
+            },
+            "description": "",
+            "title": "Usage",
+            "content": "<p>This library enables you to work with NBT using <em>standard Kotlin types<\/em>.<br />\nNote:<\/p>\n<ul>\n<li>NBT doesn't know <code>null<\/code><\/li>\n<li>Compound = <code>Map&lt;String, Any&gt;<\/code><\/li>\n<li>List = <code>List&lt;E&gt;<\/code><\/li>\n<\/ul>\n<h1 id=\"basic-operations\"><a href=\"#basic-operations\" id=\"basic-operations\" class=\"anchor\"><\/a>Basic operations<\/h1>\n<h2 id=\"read\"><a href=\"#read\" id=\"read\" class=\"anchor\"><\/a>Read<\/h2>\n<pre><code class=\"language-kotlin\">val dataInputStream: DataInputStream\n\n// Read a byte\nval nbt: Byte = dataInputStream.readNBT()\n\n// Read a named compound\nval (name, compound) = dataInputStream.readNamedNBTCompound()\nval compound = dataInputStream.readNamedNBTCompound(&quot;name&quot;)\n<\/code><\/pre>\n<h2 id=\"write\"><a href=\"#write\" id=\"write\" class=\"anchor\"><\/a>Write<\/h2>\n<pre><code class=\"language-kotlin\">val dataOutputStream: DataOutputStream\n\n// Write a byte\nval byte: Byte\ndataOutputStream.writeNBT(byte)\n\n// Write a named compound\nval name: String\nval compound: Map&lt;String, Any&gt;\ndataOutputStream.writeNamedNBTCompound(name, compound)\n<\/code><\/pre>\n<h2 id=\"stringify\"><a href=\"#stringify\" id=\"stringify\" class=\"anchor\"><\/a>Stringify<\/h2>\n<pre><code class=\"language-kotlin\">val nbt: Any\nval output: String = nbt.toSNBT()\n<\/code><\/pre>\n<h3 id=\"example\"><a href=\"#example\" id=\"example\" class=\"anchor\"><\/a>Example<\/h3>\n<p>Input:<\/p>\n<pre><code class=\"language-kotlin\">val nbt: Map&lt;String, Any&gt; = mapOf(\n    &quot;foo&quot; to listOf(&quot;bar&quot;, &quot;x&quot;), \n    &quot;answer&quot; to 42.0, \n    &quot;baz&quot; to mapOf(\n        &quot;pi&quot; to intArrayOf(3, 1, 4, 1)\n    )\n)\nprintln(nbt.toSNBT())\n<\/code><\/pre>\n<p>Output:<\/p>\n<pre><code class=\"language-kotlin\">{\n    &quot;foo&quot;: [\n        &quot;bar&quot;,\n        &quot;x&quot;\n    ],\n    &quot;answer&quot;: 42.0D,\n    &quot;baz&quot;: {\n        &quot;pi&quot;: [3, 1, 4, 1]\n    }\n}\n<\/code><\/pre>\n<h1 id=\"advanced\"><a href=\"#advanced\" id=\"advanced\" class=\"anchor\"><\/a>Advanced<\/h1>\n<h2 id=\"compression\"><a href=\"#compression\" id=\"compression\" class=\"anchor\"><\/a>Compression<\/h2>\n<p>Currently not supported. See this <a href=\"https://github.com/nee/neebt/issues/2\">issue<\/a>.<\/p>\n<h2 id=\"merging\"><a href=\"#merging\" id=\"merging\" class=\"anchor\"><\/a>Merging<\/h2>\n<h3 id=\"map-only-merging\"><a href=\"#map-only-merging\" id=\"map-only-merging\" class=\"anchor\"><\/a>Map-only merging<\/h3>\n<p>You can use <code>NBT.mergeMaps(a, b)<\/code> to merge two compounds into one, deeply.\nLists will not be merged.<\/p>\n<p>Algorithm:<\/p>\n<pre><code class=\"language-kotlin\">val c = a\nfor (key in b) {\n    if (key in a &amp;&amp; a[key] is Map &amp;&amp; b[key] is Map) {\n        c[key] = mergeMaps(a[key], b[key])\n    } else {\n        c[key] = b[key]\n    }\n}\n<\/code><\/pre>\n<h4 id=\"demonstration\"><a href=\"#demonstration\" id=\"demonstration\" class=\"anchor\"><\/a>Demonstration<\/h4>\n<pre><code class=\"language-kotlin\">{                   {                       {            \n  &quot;foo&quot;: 0,           &quot;foo&quot;: 10,              &quot;foo&quot;: 10, \n  &quot;bar&quot;: {            &quot;bar&quot;: {                &quot;bar&quot;: {   \n    &quot;baz&quot;: 1,           &quot;baz&quot;: 11,              &quot;baz&quot;: 11,\n    &quot;qux&quot;: 2    +                     =&gt;        &quot;qux&quot;: 2,         \n                        &quot;abc&quot;: 3                &quot;abc&quot;: 3 \n  },                  },                      },         \n                      &quot;xyz&quot;: 4,               &quot;xyz&quot;: 4,\n  &quot;list&quot;: [           &quot;list&quot;: [               &quot;list&quot;: [\n    &quot;!&quot;,                &quot;,&quot;                     &quot;,&quot;\n    &quot;/&quot;                 \n  ]                   ]                       ]\n}                   }                       }            \n<\/code><\/pre>\n<h3 id=\"list-only-merging\"><a href=\"#list-only-merging\" id=\"list-only-merging\" class=\"anchor\"><\/a>List-only merging<\/h3>\n<p>You can use <code>NBT.mergeLists(a, b)<\/code> to merge two lists into one, deeply.\nCompounds will not be merged.<\/p>\n<p>Algorithm:<\/p>\n<pre><code class=\"language-kotlin\">val c = a\nfor (index in b) {\n    if (index in a &amp;&amp; a[index] is List &amp;&amp; b[index] is List) {\n        c[index] = mergeLists(a[index], b[index])\n    } else {\n        c[index] = b[index]\n    }\n}\n<\/code><\/pre>\n<h4 id=\"demonstration-1\"><a href=\"#demonstration-1\" id=\"demonstration-1\" class=\"anchor\"><\/a>Demonstration<\/h4>\n<pre><code class=\"language-kotlin\">[            [                  [\n  [            [                  [\n    0,           10,                10,\n    1,           11,                11,\n    2            12,                12,\n                 5                  5\n  ],     +     ],        =&gt;       ],\n  [            [                  [\n    {&quot;x&quot;: 3},    {}                 {},\n    {&quot;y&quot;: 4}                        {&quot;y&quot;: 4}\n  ]            ],                 ],\n               []                 []\n]            ]                  ]\n<\/code><\/pre>\n<h3 id=\"list-concatenating-map-merging\"><a href=\"#list-concatenating-map-merging\" id=\"list-concatenating-map-merging\" class=\"anchor\"><\/a>List-concatenating map merging<\/h3>\n<p>You can use <code>NBT.mergeMapsAdding(a, b)<\/code> to merge two compounds into one, deeply.\nLists that are present in both <code>a<\/code> and <code>b<\/code> will be concatenated.<\/p>\n<p>Algorithm:<\/p>\n<pre><code class=\"language-kotlin\">val c = a\nfor (key in b) {\n\tif (key in a) {\n\t\tif (a[key] is Map &amp;&amp; b[key] is Map) {\n\t\t\tc[key] = merge(a[key], b[key])\n\t\t}\n\t\telse if (a[key] is List &amp;&amp; b[key] is List) {\n\t\t\tc[key] = a[key] + b[key]\n\t\t}\n\t\telse {\n\t\t\tc[key] = b[key]\n\t\t}\n\t} else {\n\t\tc[key] = b[key]\n\t}\n}\n<\/code><\/pre>\n<h4 id=\"demonstration-2\"><a href=\"#demonstration-2\" id=\"demonstration-2\" class=\"anchor\"><\/a>Demonstration<\/h4>\n<pre><code class=\"language-kotlin\">{                   {                       {            \n  &quot;foo&quot;: 0,           &quot;foo&quot;: 10,              &quot;foo&quot;: 10, \n  &quot;bar&quot;: {            &quot;bar&quot;: {                &quot;bar&quot;: {   \n    &quot;baz&quot;: 1,           &quot;baz&quot;: 11,              &quot;baz&quot;: 11,\n    &quot;qux&quot;: 2    +                     =&gt;        &quot;qux&quot;: 2,         \n                        &quot;abc&quot;: 3                &quot;abc&quot;: 3 \n  },                  },                      },         \n                      &quot;xyz&quot;: 4,               &quot;xyz&quot;: 4,\n  &quot;list&quot;: [           &quot;list&quot;: [               &quot;list&quot;: [\n    &quot;!&quot;,                                        &quot;!&quot;,\n    &quot;/&quot;                                         &quot;/&quot;,\n                        &quot;,&quot;                     &quot;,&quot;\n  ]                   ]                       ]\n}                   }                       }            \n<\/code><\/pre>\n<h3 id=\"map-merging\"><a href=\"#map-merging\" id=\"map-merging\" class=\"anchor\"><\/a>Map merging<\/h3>\n<p>You can use <code>NBT.merge(a, b)<\/code> to merge two compounds into one, deeply.\nLists will be merged too.<\/p>\n<p>Algorithm:<\/p>\n<pre><code class=\"language-kotlin\">val c = a\nfor (key in b) {\n\tif (key in a) {\n\t\tif (a[key] is Map &amp;&amp; b[key] is Map) {\n\t\t\tc[key] = merge(a[key], b[key])\n\t\t}\n\t\telse if (a[key] is List &amp;&amp; b[key] is List) {\n\t\t\tc[key] = merge(a[key], b[key])\n\t\t}\n\t\telse {\n\t\t\tc[key] = b[key]\n\t\t}\n\t} else {\n\t\tc[key] = b[key]\n\t}\n}\n<\/code><\/pre>\n<h4 id=\"demonstration-3\"><a href=\"#demonstration-3\" id=\"demonstration-3\" class=\"anchor\"><\/a>Demonstration<\/h4>\n<pre><code class=\"language-kotlin\">{                   {                       {            \n  &quot;foo&quot;: 0,           &quot;foo&quot;: 10,              &quot;foo&quot;: 10, \n  &quot;bar&quot;: {            &quot;bar&quot;: {                &quot;bar&quot;: {   \n    &quot;baz&quot;: 1,           &quot;baz&quot;: 11,              &quot;baz&quot;: 11,\n    &quot;qux&quot;: 2    +                     =&gt;        &quot;qux&quot;: 2,         \n                        &quot;abc&quot;: 3                &quot;abc&quot;: 3 \n  },                  },                      },         \n                      &quot;xyz&quot;: 4,               &quot;xyz&quot;: 4,\n  &quot;list&quot;: [           &quot;list&quot;: [               &quot;list&quot;: [\n\t{                   {                       { \n        &quot;x&quot;: &quot;!&quot;                                  &quot;x&quot;: &quot;!&quot;,\n                          &quot;y&quot;: &quot;,&quot;,               &quot;y&quot;: &quot;,&quot;,\n                          &quot;z&quot;: &quot;%&quot;                &quot;z&quot;: &quot;%&quot; \n\t},                  }                       },\n    { &quot;y&quot;: &quot;/&quot; }                                { &quot;y&quot;: &quot;/&quot; }\n  ]                   ]                       ]\n}                   }                       }            \n<\/code><\/pre>\n<h3 id=\"list-merging\"><a href=\"#list-merging\" id=\"list-merging\" class=\"anchor\"><\/a>List merging<\/h3>\n<p>You can use <code>NBT.merge(a, b)<\/code> to merge two lists into one, deeply.\nCompounds will be merged too.<\/p>\n<p>Algorithm:<\/p>\n<pre><code class=\"language-kotlin\">val c = a\nfor (index in b) {\n\tif (index in a) {\n\t\tif (a[index] is Map &amp;&amp; b[index] is Map) {\n\t\t\tc[index] = merge(a[index], b[index])\n\t\t}\n\t\telse if (a[index] is List &amp;&amp; b[index] is List) {\n\t\t\tc[index] = merge(a[index], b[index])\n\t\t}\n\t\telse {\n\t\t\tc[index] = b[index]\n\t\t}\n\t} else {\n\t\tc[index] = b[index]\n\t}\n}\n<\/code><\/pre>\n<h4 id=\"demonstration-4\"><a href=\"#demonstration-4\" id=\"demonstration-4\" class=\"anchor\"><\/a>Demonstration<\/h4>\n<pre><code class=\"language-kotlin\">[            [                  [\n  [            [                  [\n    0,           10,                10,\n    1,           11,                11,\n    2            12,                12,\n                 5                  5\n  ],     +     ],        =&gt;       ],\n  [            [                  [\n    {            {                  {\n      &quot;x&quot;: 3                          &quot;x&quot;: 3,\n                   &quot;z&quot;: 7             &quot;z&quot;: 7\n    },           }                  },\n    {                               {\n      &quot;y&quot;: 4                          &quot;y&quot;: 4\n    }                               }\n  ]            ],                 ],\n               []                 []\n]            ]                  ]\n<\/code><\/pre>\n<h2 id=\"paths\"><a href=\"#paths\" id=\"paths\" class=\"anchor\"><\/a>Paths<\/h2>\n<h2 id=\"additional-information\"><a href=\"#additional-information\" id=\"additional-information\" class=\"anchor\"><\/a>Additional Information<\/h2>\n<p>Type map:<\/p>\n<ul>\n<li><code>Byte<\/code>: TAG_Byte<\/li>\n<li><code>Short<\/code>: TAG_Short<\/li>\n<li><code>Int<\/code>: TAG_Int<\/li>\n<li><code>Long<\/code>: TAG_Long<\/li>\n<li><code>Float<\/code>: TAG_Float<\/li>\n<li><code>Double<\/code>: TAG_Double<\/li>\n<li><code>ByteArray<\/code>: TAG_Byte_Array<\/li>\n<li><code>String<\/code>: Tag_String<\/li>\n<li><code>List<\/code>: TAG_List, values must be of a single valid NBT type<\/li>\n<li><code>Map<\/code>: TAG_Compound, keys must be strings, values must be valid NBT types<\/li>\n<li><code>IntArray<\/code>: TAG_Int_Array<\/li>\n<li><code>LongArray<\/code>: TAG_Long_Array<\/li>\n<\/ul>\n<p>For more detail, see <a href=\"https://wiki.vg/NBT#Specification\">NBT Specification<\/a>.<\/p>\n"
+          }]
+        }
+      },
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://nee.github.io/neebt",
+          "fileName": "wiki",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://nee.github.io/neebt/wiki"
+        },
+        "description": "",
+        "title": "Wiki",
+        "content": "<html>\n <head><\/head>\n <body>\n  <ul> \n   <li><a href=\"https://nee.github.io/neebt/wiki/installation\">Installation<\/a><\/li> \n   <li><a href=\"https://nee.github.io/neebt/wiki/usage\">Usage<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+      }]
+    },
+    "changelog": {
+      "ownKey": "changelog",
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://nee.github.io/neebt",
+          "fileName": "changelog",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://nee.github.io/neebt/changelog"
+        },
+        "description": "",
+        "title": "Changelog",
+        "content": ""
+      }]
+    }
+  },
+  "ownPages": [
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://nee.github.io/neebt",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://nee.github.io/neebt"
+      },
+      "description": "",
+      "title": "Home",
+      "content": ""
+    },
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://nee.github.io/neebt",
+        "fileName": "404",
+        "extension": "html",
+        "usePrettyUrl": false,
+        "link": "https://nee.github.io/neebt/404.html"
+      },
+      "description": "",
+      "title": "Not Found",
+      "content": ""
+    }
+  ]
+}

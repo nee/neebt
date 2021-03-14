@@ -1,0 +1,586 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.21.0"/>
+<link rel="icon" href="https://nee.github.io/neebt/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Usage</title>
+
+
+<meta name="description" content="Kotlin library to work with the NBT file format.">
+
+
+
+<link rel="prev" href="https://nee.github.io/neebt/wiki/installation">
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://nee.github.io/neebt/Editorial/5fccf493/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://nee.github.io/neebt/Editorial/5fccf493/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://nee.github.io/neebt/Editorial/5fccf493/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://nee.github.io/neebt/assets/css/orchidSearch.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.21.0","baseUrl":"https://nee.github.io/neebt","environment":"prod","version":"1.0.0"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+</head>
+<body class="is-loading">
+
+
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+    <!-- start:inject meta-components [bodyStart] -->
+    
+    <!-- end:inject meta-components [bodyStart] -->
+
+
+
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            
+                <header id="header">
+    <a href="https://nee.github.io/neebt" class="logo">Neebt</a>
+    <ul class="icons">
+    
+    
+        <li>
+            <a href="https://github.com/nee/neebt" class="icon fa-github">
+                <span class="label">github</span>
+            </a>
+        </li>
+    
+    
+    </ul>
+</header>
+
+            
+            
+            
+            
+                <section id="pageContent">
+                    <header class="major"><h2>Usage</h2></header>
+                    <article>
+                        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <p>This library enables you to work with NBT using <em>standard Kotlin types</em>.<br />
+Note:</p>
+<ul>
+<li>NBT doesn't know <code>null</code></li>
+<li>Compound = <code>Map&lt;String, Any&gt;</code></li>
+<li>List = <code>List&lt;E&gt;</code></li>
+</ul>
+<h1 id="basic-operations"><a href="#basic-operations" id="basic-operations" class="anchor"></a>Basic operations</h1>
+<h2 id="read"><a href="#read" id="read" class="anchor"></a>Read</h2>
+<pre><code class="language-kotlin">val dataInputStream: DataInputStream
+
+// Read a byte
+val nbt: Byte = dataInputStream.readNBT()
+
+// Read a named compound
+val (name, compound) = dataInputStream.readNamedNBTCompound()
+val compound = dataInputStream.readNamedNBTCompound(&quot;name&quot;)
+</code></pre>
+<h2 id="write"><a href="#write" id="write" class="anchor"></a>Write</h2>
+<pre><code class="language-kotlin">val dataOutputStream: DataOutputStream
+
+// Write a byte
+val byte: Byte
+dataOutputStream.writeNBT(byte)
+
+// Write a named compound
+val name: String
+val compound: Map&lt;String, Any&gt;
+dataOutputStream.writeNamedNBTCompound(name, compound)
+</code></pre>
+<h2 id="stringify"><a href="#stringify" id="stringify" class="anchor"></a>Stringify</h2>
+<pre><code class="language-kotlin">val nbt: Any
+val output: String = nbt.toSNBT()
+</code></pre>
+<h3 id="example"><a href="#example" id="example" class="anchor"></a>Example</h3>
+<p>Input:</p>
+<pre><code class="language-kotlin">val nbt: Map&lt;String, Any&gt; = mapOf(
+    &quot;foo&quot; to listOf(&quot;bar&quot;, &quot;x&quot;), 
+    &quot;answer&quot; to 42.0, 
+    &quot;baz&quot; to mapOf(
+        &quot;pi&quot; to intArrayOf(3, 1, 4, 1)
+    )
+)
+println(nbt.toSNBT())
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-kotlin">{
+    &quot;foo&quot;: [
+        &quot;bar&quot;,
+        &quot;x&quot;
+    ],
+    &quot;answer&quot;: 42.0D,
+    &quot;baz&quot;: {
+        &quot;pi&quot;: [3, 1, 4, 1]
+    }
+}
+</code></pre>
+<h1 id="advanced"><a href="#advanced" id="advanced" class="anchor"></a>Advanced</h1>
+<h2 id="compression"><a href="#compression" id="compression" class="anchor"></a>Compression</h2>
+<p>Currently not supported. See this <a href="https://github.com/nee/neebt/issues/2">issue</a>.</p>
+<h2 id="merging"><a href="#merging" id="merging" class="anchor"></a>Merging</h2>
+<h3 id="map-only-merging"><a href="#map-only-merging" id="map-only-merging" class="anchor"></a>Map-only merging</h3>
+<p>You can use <code>NBT.mergeMaps(a, b)</code> to merge two compounds into one, deeply.
+Lists will not be merged.</p>
+<p>Algorithm:</p>
+<pre><code class="language-kotlin">val c = a
+for (key in b) {
+    if (key in a &amp;&amp; a[key] is Map &amp;&amp; b[key] is Map) {
+        c[key] = mergeMaps(a[key], b[key])
+    } else {
+        c[key] = b[key]
+    }
+}
+</code></pre>
+<h4 id="demonstration"><a href="#demonstration" id="demonstration" class="anchor"></a>Demonstration</h4>
+<pre><code class="language-kotlin">{                   {                       {            
+  &quot;foo&quot;: 0,           &quot;foo&quot;: 10,              &quot;foo&quot;: 10, 
+  &quot;bar&quot;: {            &quot;bar&quot;: {                &quot;bar&quot;: {   
+    &quot;baz&quot;: 1,           &quot;baz&quot;: 11,              &quot;baz&quot;: 11,
+    &quot;qux&quot;: 2    +                     =&gt;        &quot;qux&quot;: 2,         
+                        &quot;abc&quot;: 3                &quot;abc&quot;: 3 
+  },                  },                      },         
+                      &quot;xyz&quot;: 4,               &quot;xyz&quot;: 4,
+  &quot;list&quot;: [           &quot;list&quot;: [               &quot;list&quot;: [
+    &quot;!&quot;,                &quot;,&quot;                     &quot;,&quot;
+    &quot;/&quot;                 
+  ]                   ]                       ]
+}                   }                       }            
+</code></pre>
+<h3 id="list-only-merging"><a href="#list-only-merging" id="list-only-merging" class="anchor"></a>List-only merging</h3>
+<p>You can use <code>NBT.mergeLists(a, b)</code> to merge two lists into one, deeply.
+Compounds will not be merged.</p>
+<p>Algorithm:</p>
+<pre><code class="language-kotlin">val c = a
+for (index in b) {
+    if (index in a &amp;&amp; a[index] is List &amp;&amp; b[index] is List) {
+        c[index] = mergeLists(a[index], b[index])
+    } else {
+        c[index] = b[index]
+    }
+}
+</code></pre>
+<h4 id="demonstration-1"><a href="#demonstration-1" id="demonstration-1" class="anchor"></a>Demonstration</h4>
+<pre><code class="language-kotlin">[            [                  [
+  [            [                  [
+    0,           10,                10,
+    1,           11,                11,
+    2            12,                12,
+                 5                  5
+  ],     +     ],        =&gt;       ],
+  [            [                  [
+    {&quot;x&quot;: 3},    {}                 {},
+    {&quot;y&quot;: 4}                        {&quot;y&quot;: 4}
+  ]            ],                 ],
+               []                 []
+]            ]                  ]
+</code></pre>
+<h3 id="list-concatenating-map-merging"><a href="#list-concatenating-map-merging" id="list-concatenating-map-merging" class="anchor"></a>List-concatenating map merging</h3>
+<p>You can use <code>NBT.mergeMapsAdding(a, b)</code> to merge two compounds into one, deeply.
+Lists that are present in both <code>a</code> and <code>b</code> will be concatenated.</p>
+<p>Algorithm:</p>
+<pre><code class="language-kotlin">val c = a
+for (key in b) {
+	if (key in a) {
+		if (a[key] is Map &amp;&amp; b[key] is Map) {
+			c[key] = merge(a[key], b[key])
+		}
+		else if (a[key] is List &amp;&amp; b[key] is List) {
+			c[key] = a[key] + b[key]
+		}
+		else {
+			c[key] = b[key]
+		}
+	} else {
+		c[key] = b[key]
+	}
+}
+</code></pre>
+<h4 id="demonstration-2"><a href="#demonstration-2" id="demonstration-2" class="anchor"></a>Demonstration</h4>
+<pre><code class="language-kotlin">{                   {                       {            
+  &quot;foo&quot;: 0,           &quot;foo&quot;: 10,              &quot;foo&quot;: 10, 
+  &quot;bar&quot;: {            &quot;bar&quot;: {                &quot;bar&quot;: {   
+    &quot;baz&quot;: 1,           &quot;baz&quot;: 11,              &quot;baz&quot;: 11,
+    &quot;qux&quot;: 2    +                     =&gt;        &quot;qux&quot;: 2,         
+                        &quot;abc&quot;: 3                &quot;abc&quot;: 3 
+  },                  },                      },         
+                      &quot;xyz&quot;: 4,               &quot;xyz&quot;: 4,
+  &quot;list&quot;: [           &quot;list&quot;: [               &quot;list&quot;: [
+    &quot;!&quot;,                                        &quot;!&quot;,
+    &quot;/&quot;                                         &quot;/&quot;,
+                        &quot;,&quot;                     &quot;,&quot;
+  ]                   ]                       ]
+}                   }                       }            
+</code></pre>
+<h3 id="map-merging"><a href="#map-merging" id="map-merging" class="anchor"></a>Map merging</h3>
+<p>You can use <code>NBT.merge(a, b)</code> to merge two compounds into one, deeply.
+Lists will be merged too.</p>
+<p>Algorithm:</p>
+<pre><code class="language-kotlin">val c = a
+for (key in b) {
+	if (key in a) {
+		if (a[key] is Map &amp;&amp; b[key] is Map) {
+			c[key] = merge(a[key], b[key])
+		}
+		else if (a[key] is List &amp;&amp; b[key] is List) {
+			c[key] = merge(a[key], b[key])
+		}
+		else {
+			c[key] = b[key]
+		}
+	} else {
+		c[key] = b[key]
+	}
+}
+</code></pre>
+<h4 id="demonstration-3"><a href="#demonstration-3" id="demonstration-3" class="anchor"></a>Demonstration</h4>
+<pre><code class="language-kotlin">{                   {                       {            
+  &quot;foo&quot;: 0,           &quot;foo&quot;: 10,              &quot;foo&quot;: 10, 
+  &quot;bar&quot;: {            &quot;bar&quot;: {                &quot;bar&quot;: {   
+    &quot;baz&quot;: 1,           &quot;baz&quot;: 11,              &quot;baz&quot;: 11,
+    &quot;qux&quot;: 2    +                     =&gt;        &quot;qux&quot;: 2,         
+                        &quot;abc&quot;: 3                &quot;abc&quot;: 3 
+  },                  },                      },         
+                      &quot;xyz&quot;: 4,               &quot;xyz&quot;: 4,
+  &quot;list&quot;: [           &quot;list&quot;: [               &quot;list&quot;: [
+	{                   {                       { 
+        &quot;x&quot;: &quot;!&quot;                                  &quot;x&quot;: &quot;!&quot;,
+                          &quot;y&quot;: &quot;,&quot;,               &quot;y&quot;: &quot;,&quot;,
+                          &quot;z&quot;: &quot;%&quot;                &quot;z&quot;: &quot;%&quot; 
+	},                  }                       },
+    { &quot;y&quot;: &quot;/&quot; }                                { &quot;y&quot;: &quot;/&quot; }
+  ]                   ]                       ]
+}                   }                       }            
+</code></pre>
+<h3 id="list-merging"><a href="#list-merging" id="list-merging" class="anchor"></a>List merging</h3>
+<p>You can use <code>NBT.merge(a, b)</code> to merge two lists into one, deeply.
+Compounds will be merged too.</p>
+<p>Algorithm:</p>
+<pre><code class="language-kotlin">val c = a
+for (index in b) {
+	if (index in a) {
+		if (a[index] is Map &amp;&amp; b[index] is Map) {
+			c[index] = merge(a[index], b[index])
+		}
+		else if (a[index] is List &amp;&amp; b[index] is List) {
+			c[index] = merge(a[index], b[index])
+		}
+		else {
+			c[index] = b[index]
+		}
+	} else {
+		c[index] = b[index]
+	}
+}
+</code></pre>
+<h4 id="demonstration-4"><a href="#demonstration-4" id="demonstration-4" class="anchor"></a>Demonstration</h4>
+<pre><code class="language-kotlin">[            [                  [
+  [            [                  [
+    0,           10,                10,
+    1,           11,                11,
+    2            12,                12,
+                 5                  5
+  ],     +     ],        =&gt;       ],
+  [            [                  [
+    {            {                  {
+      &quot;x&quot;: 3                          &quot;x&quot;: 3,
+                   &quot;z&quot;: 7             &quot;z&quot;: 7
+    },           }                  },
+    {                               {
+      &quot;y&quot;: 4                          &quot;y&quot;: 4
+    }                               }
+  ]            ],                 ],
+               []                 []
+]            ]                  ]
+</code></pre>
+<h2 id="paths"><a href="#paths" id="paths" class="anchor"></a>Paths</h2>
+<h2 id="additional-information"><a href="#additional-information" id="additional-information" class="anchor"></a>Additional Information</h2>
+<p>Type map:</p>
+<ul>
+<li><code>Byte</code>: TAG_Byte</li>
+<li><code>Short</code>: TAG_Short</li>
+<li><code>Int</code>: TAG_Int</li>
+<li><code>Long</code>: TAG_Long</li>
+<li><code>Float</code>: TAG_Float</li>
+<li><code>Double</code>: TAG_Double</li>
+<li><code>ByteArray</code>: TAG_Byte_Array</li>
+<li><code>String</code>: Tag_String</li>
+<li><code>List</code>: TAG_List, values must be of a single valid NBT type</li>
+<li><code>Map</code>: TAG_Compound, keys must be strings, values must be valid NBT types</li>
+<li><code>IntArray</code>: TAG_Int_Array</li>
+<li><code>LongArray</code>: TAG_Long_Array</li>
+</ul>
+<p>For more detail, see <a href="https://wiki.vg/NBT#Specification">NBT Specification</a>.</p>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+                    </article>
+                </section>
+            
+        </div>
+        <hr>
+
+        <!-- Page Footer -->
+        <div class="inner">
+    <footer id="footer">
+        <div class="clearfix">
+            
+                <div class="float-left">
+                    <a href="https://nee.github.io/neebt/wiki/installation" class="button special small pill">
+                        <span>&larr;</span> Installation
+                    </a>
+                </div>
+            
+            
+        </div>
+    </footer>
+</div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form data-orchid-search="">
+                <input type="text" name="query" id="query" placeholder="Search"/>
+            </form>
+            <div class="box" id="search-results" data-orchid-search-results style="display: none;">
+                <b>Search Results</b>
+                <ul></ul>
+            </div>
+            <div class="box" id="search-progress" data-orchid-search-progress style="display: none;">
+                <div class="loader">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <nav id="siteNav" class="menu">
+            <header class="major">
+                <h2>Neebt</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    
+    <li>
+        <a class="subheader">Wiki</a>
+    </li>
+    
+
+                
+                    
+    
+    <li>
+        <a href="https://nee.github.io/neebt/wiki/installation">Installation</a>
+    </li>
+    
+
+                
+                    
+    
+    <li>
+        <a href="https://nee.github.io/neebt/wiki/usage">Usage</a>
+    </li>
+    
+
+                
+                    
+    
+    <li>
+        <a href="https://nee.github.io/neebt/changelog">Changelog</a>
+    </li>
+    
+
+                
+                    
+    
+    <li>
+        <a class="subheader">API Docs</a>
+    </li>
+    
+
+                
+                    
+    <li>
+        <span class="opener">Classes</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://nee.github.io/neebt/kotlindoc/dev/nee/nbt">NBT</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Packages</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://nee.github.io/neebt/kotlindoc/dev/nee">dev.nee</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+
+        <!-- Section -->
+        <section>
+            <p class="text-center">
+                Currently 1.0.0. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright text-center">&copy; Neebt. All rights reserved.<br>Design by <a href="https://html5up.net">HTML5 UP</a></p>
+        </footer>
+
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+
+        
+            
+        
+
+        
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+    <!-- start:inject meta-components [bodyEnd] -->
+    
+    <!-- end:inject meta-components [bodyEnd] -->
+
+
+
+
+<!-- start:inject scripts -->
+<script  src="https://nee.github.io/neebt/Editorial/5fccf493/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script  src="https://nee.github.io/neebt/Editorial/5fccf493/ajax/libs/skel/3.0.1/skel.min.js"></script>
+<script  src="https://nee.github.io/neebt/Editorial/5fccf493/assets/js/editorial_util.js"></script>
+<script  src="https://nee.github.io/neebt/Editorial/5fccf493/assets/js/editorial_main.js"></script>
+<script  src="https://nee.github.io/neebt/Editorial/5fccf493/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://nee.github.io/neebt/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://nee.github.io/neebt/lunr/lunr.js"></script>
+<script  src="https://nee.github.io/neebt/assets/js/orchidSearch.js"></script>
+<!-- end:inject scripts -->
+
+
+</body>
+</html>
